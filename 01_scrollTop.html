@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<title>scrollTop</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		#wrap{max-width:1920px; margin:0 auto;}
+		#wrap p{width:100%; height:30px; background-color:#000; text-align:center; line-height:30px;}
+		#wrap p a{color:#fff; padding:0 20px;}
+		.area{width:100%;}
+		.area1{background-color:#f77;}
+		.area2{background-color:#7f7;}
+		.area3{background-color:#77f;}
+		.area4{background-color:#ccc;}
+	</style>
+	<script>
+		$(function(){
+			/*
+				화면에 보이는 높이로 설정
+				단점: 화면에 보이는 크기가 전부 다르기 때문에 여백이 생길수 있음
+			*/
+			$(".area").css({"height":$(window).height()});
+
+			// #wrap에 a중에 0번을 클릭하면 area1영역으로 이동하기
+			$("#wrap a:eq(0)").click(function(){
+				// area1의 높이값이 얼마인지 확인
+				var area1 =$(".area1").offset().top;
+				// body나 html 0,0 의 위치가 기준
+				$("html,body").animate({scrollTop:area1},500);
+			});
+
+			$("#wrap a:eq(1)").click(function(){
+				var area2 =$(".area2").offset().top;
+				$("html,body").animate({scrollTop:area2},500);
+			});
+
+			$("#wrap a:eq(2)").click(function(){
+				var area3 =$(".area3").offset().top;
+				$("html,body").animate({scrollTop:area3},500);
+			});
+
+			$("#wrap a:eq(3)").click(function(){
+				var area4 =$(".area4").offset().top;
+				$("html,body").animate({scrollTop:area4},500);
+			});
+		});
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<p>
+			<a href="#area1" title="area1">area1</a>
+			<a href="#area2" title="area2">area2</a>
+			<a href="#area3" title="area3">area3</a>
+			<a href="#area4" title="area4">area4</a>
+		</p>
+		<div class="area area1">sectionArea1</div>
+		<div class="area area2">sectionArea2</div>
+		<div class="area area3">sectionArea3</div>
+		<div class="area area4">sectionArea4</div>
+	</div>
+</body>
+</html>
